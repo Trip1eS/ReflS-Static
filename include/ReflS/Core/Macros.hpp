@@ -1,18 +1,24 @@
 #pragma once
 
-#define REFLS_TYPE(TYPE, _BASES, _MEMBERS, ...)                     \
+#define REFLS_TYPE(TYPE, _BASES, _CTORS, _MEMBERS, ...)             \
 	template<>                                                      \
 	struct ReflS::TypeInfo<TYPE> {                                  \
 		using Type = TYPE;                                          \
 		static constexpr std::string_view Name {#TYPE};             \
 		static constexpr List			  Attributes {__VA_ARGS__}; \
 		_BASES                                                      \
+		_CTORS                                                      \
 		_MEMBERS                                                    \
 	}
 
 #define ATTR(...) Attribute([]() { return __VA_ARGS__; })
 #define BASES(...) static constexpr List Bases = MakeBaseList<__VA_ARGS__>;
+#define CTORS(...) static constexpr List Constructors {__VA_ARGS__};
 #define MEMBERS(...) static constexpr List Members {__VA_ARGS__};
+#define CTOR(...) \
+	Constructor<Type, __VA_ARGS__> {}
+#define DEFAULT_CTOR() \
+	Constructor<Type> {}
 #define FIELD(NAME, ...)              \
 	Field(                            \
 		Str<#NAME> {},                \

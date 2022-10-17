@@ -7,6 +7,7 @@
 #include "040-TypeInfo.hpp"
 #include "050-Attribute.hpp"
 #include "060-Inheritance.hpp"
+#include "070-Constructor.hpp"
 
 int main(int argc, const char* argv[]) {
 	return Catch::Session().run(argc, argv);

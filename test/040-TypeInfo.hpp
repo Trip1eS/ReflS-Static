@@ -12,7 +12,7 @@ struct A {
 };
 } // namespace Test4
 
-REFLS_TYPE(Test4::A, BASES(), MEMBERS(FIELD(a), FUNCTION(f)));
+REFLS_TYPE(Test4::A, BASES(), CTORS(DEFAULT_CTOR()), MEMBERS(FIELD(a), FUNCTION(f)));
 
 TEST_CASE("TypeInfo") {
 	using namespace Test4;

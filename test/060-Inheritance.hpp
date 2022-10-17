@@ -24,9 +24,24 @@ struct C : B {
 
 } // namespace Test6
 
-REFLS_TYPE(Test6::A, BASES(), MEMBERS(FIELD(a), FUNCTION(f), FUNCTION(h)));
-REFLS_TYPE(Test6::B, BASES(Test6::A), MEMBERS(FIELD(b), FUNCTION(f)));
-REFLS_TYPE(Test6::C, BASES(Test6::B), MEMBERS(FIELD(c), FUNCTION(f)));
+REFLS_TYPE(
+	Test6::A,
+	BASES(),
+	CTORS(DEFAULT_CTOR()),
+	MEMBERS(FIELD(a), FUNCTION(f), FUNCTION(h))
+);
+REFLS_TYPE(
+	Test6::B,
+	BASES(Test6::A),
+	CTORS(DEFAULT_CTOR()),
+	MEMBERS(FIELD(b), FUNCTION(f))
+);
+REFLS_TYPE(
+	Test6::C,
+	BASES(Test6::B),
+	CTORS(DEFAULT_CTOR()),
+	MEMBERS(FIELD(c), FUNCTION(f))
+);
 
 TEST_CASE("Inheritance") {
 	constexpr auto tA = TypeDescriptor<Test6::A> {};

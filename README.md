@@ -1,6 +1,6 @@
 # ReflS
 
-ReflS is a small static reflection library for C++20, providing compile-time type information.
+ReflS is a small header-only static reflection library for C++20, providing compile-time type information.
 
 ## Basic usage
 
@@ -14,6 +14,14 @@ struct Vector2 {
 	Vector2() : x(.0f), y(.0f) {}
 	Vector2(float x_, float y_) : x(x_), y(y_) {}
 };
+```
+
+### Include ReflS in your project
+
+Since ReflS is a header-only library, you can easily copy `include/ReflS` to your project and include the main header to get everything working.
+
+```c++
+#include <ReflS/ReflS.hpp>
 ```
 
 ### Registration
